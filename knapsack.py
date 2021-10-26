@@ -43,10 +43,23 @@ class Knapsack:
     def get_pop(self):
         return self.population
 
+    def get_constraint(self):
+        return self.constraint
+
+    def get_weight(self, i):
+        return self.weights[i]
+
+    def get_value(self, i):
+        return self.values[i]
+
     def init_pop(self):
         for i in range(self.pop_size):
             self.set_population(i, Individual(n_objects=self.n_objects))
 
+    def objective_func(self, n):
+        individual = self.population[n]
+        value = individual.objective_function(self)
+        return value
 
 
 

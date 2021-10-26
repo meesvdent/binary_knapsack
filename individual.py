@@ -11,7 +11,6 @@ And method:
 
 import numpy as np
 
-
 class Individual:
 
     def __init__(self, n_objects):
@@ -23,6 +22,15 @@ class Individual:
     def get_order(self):
         return self.order
 
+    def objective_function(self, knapsack):
+        remaining_capacity = knapsack.get_constraint()
+        total_value = 0
+        for payload in self.get_order():
+            if knapsack.get_weight(payload) <= knapsack.get_constraint():
+                remaining_capacity -= knapsack.get_weight(payload)
+                total_value += knapsack.get_value(payload)
+
+        return total_value
 
 
 
