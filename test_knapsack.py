@@ -6,13 +6,15 @@ from knapsack import Knapsack
 
 
 def test_knapsack():
-    test_object = Knapsack(n_objects=10)
+    test_object = Knapsack(n_objects=100)
     test_object.init_pop()
-    print(test_object.get_pop())
-    print("obj func")
-    print(test_object.objective_func(74))
+    for object in test_object.population:
+        print(object.order)
+        print(object.objective_function(test_object))
+    print(test_object.mutate(list(range(10)), 0.9))
 
-
+def test_evolution():
+    pass
 
 
 
@@ -20,4 +22,6 @@ def test_knapsack():
 
 
 if __name__ == "__main__":
-    test_knapsack()
+    test_object = Knapsack()
+    test_object.init_pop()
+    test_object.evolution()
